@@ -57,12 +57,13 @@ a { text-decoration: none; color: inherit; }
   width: 100%;
   max-width: 430px;
   height: var(--nav-h);
-  background: rgba(17,24,39,0.92);
+  background: rgba(17,24,39,0.95);
   backdrop-filter: blur(20px);
   border-top: 1px solid var(--border);
   display: flex;
   align-items: stretch;
   z-index: 100;
+  box-shadow: 0 -4px 16px rgba(0,0,0,0.2);
 }
 .nav-item {
   flex: 1;
@@ -70,25 +71,119 @@ a { text-decoration: none; color: inherit; }
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 3px;
+  gap: 4px;
   color: var(--text-muted);
   font-size: 11px;
   font-weight: 500;
-  transition: color 0.2s;
-  padding: 6px 4px;
+  transition: all 0.2s ease;
+  padding: 8px 4px;
   border-radius: 0;
   position: relative;
+  background: transparent;
 }
+.nav-item:hover { color: var(--text); }
 .nav-item.active { color: var(--accent); }
 .nav-item.active::before {
   content: '';
   position: absolute;
-  top: 0; left: 15%; right: 15%;
-  height: 2px;
+  top: 0; left: 20%; right: 20%;
+  height: 3px;
   background: var(--accent);
   border-radius: 0 0 4px 4px;
 }
 .nav-icon { font-size: 20px; line-height: 1; }
+.menu-toggle {
+  border-left: 1px solid var(--border);
+}
+
+/* ─── Menu Drawer ────────────────────────────────────────────── */
+.menu-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.6);
+  backdrop-filter: blur(2px);
+  z-index: 200;
+  animation: fadeIn 0.2s ease;
+}
+.menu-drawer {
+  position: fixed;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%;
+  max-width: 430px;
+  background: var(--bg-card);
+  border-radius: var(--radius) var(--radius) 0 0;
+  z-index: 201;
+  animation: slideUp 0.3s ease;
+  box-shadow: 0 -8px 32px rgba(0,0,0,0.5);
+  max-height: 70vh;
+  display: flex;
+  flex-direction: column;
+}
+.menu-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px 20px 16px;
+  border-bottom: 1px solid var(--border);
+}
+.menu-header h3 {
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--text);
+}
+.menu-close {
+  color: var(--text-muted);
+  transition: color 0.2s;
+  padding: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.menu-close:hover { color: var(--text); }
+.menu-content {
+  padding: 8px;
+  overflow-y: auto;
+}
+.menu-item {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  width: 100%;
+  padding: 16px 16px;
+  border-radius: var(--radius-sm);
+  color: var(--text);
+  font-size: 15px;
+  font-weight: 500;
+  transition: all 0.2s;
+  background: transparent;
+  text-align: left;
+}
+.menu-item:hover {
+  background: var(--bg-card2);
+}
+.menu-item.active {
+  background: rgba(56,189,248,0.1);
+  color: var(--accent);
+}
+.menu-item-icon {
+  font-size: 24px;
+  width: 32px;
+  text-align: center;
+}
+.menu-item-label {
+  flex: 1;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+@keyframes slideUp {
+  from { transform: translate(-50%, 100%); }
+  to { transform: translate(-50%, 0); }
+}
 
 /* ─── Cards ──────────────────────────────────────────────────── */
 .card {
