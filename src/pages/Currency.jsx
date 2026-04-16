@@ -1,11 +1,11 @@
 import { useState, useEffect, useCallback } from "react";
-import { ArrowUpDown, RefreshCcw, CheckCircle2, AlertTriangle, AlertCircle, Clock } from "lucide-react";
+import { ArrowUpDown, RefreshCcw, CircleCheck as CheckCircle2, TriangleAlert as AlertTriangle, CircleAlert as AlertCircle, Clock } from "lucide-react";
 
 // Frankfurter API — free, no API key, ECB data updated daily
 // Supports: AUD, BGN, BRL, CAD, CHF, CNY, CZK, DKK, EUR, GBP,
 //           HKD, HUF, IDR, ILS, INR, ISK, JPY, KRW, MXN, MYR,
 //           NOK, NZD, PHP, PLN, RON, SEK, SGD, THB, TRY, USD, ZAR
-const FRANKFURTER_BASE = "https://api.frankfurter.app";
+const FRANKFURTER_BASE = "https://api.frankfurter.dev/v1";
 
 const SUPPORTED_CURRENCIES = ["THB", "MYR", "USD", "SGD", "EUR", "GBP", "JPY"];
 
@@ -140,7 +140,7 @@ export default function Currency() {
             >
                 <div>
                     <div style={{ display: "flex", alignItems: "center", gap: 6, fontSize: 12, fontWeight: 600, color: isLive ? "var(--green)" : error ? "var(--red)" : "var(--amber)" }}>
-                        {loading ? <><Clock size={14} /> Fetching live rates…</> : isLive ? <><CheckCircle2 size={14} /> Live rates (ECB via Frankfurter)</> : error ? <><AlertCircle size={14} /> Offline — approximate rates</> : <><Clock size={14} /> Loading…</>}
+                        {loading ? <><Clock size={14} /> Fetching live rates…</> : isLive ? <><CheckCircle2 size={14} /> Live rates (ECB via Frankfurter.dev)</> : error ? <><AlertCircle size={14} /> Offline — approximate rates</> : <><Clock size={14} /> Loading…</>}
                     </div>
                     {ratesDate && !loading && (
                         <div style={{ fontSize: 11, color: "var(--text-muted)", marginTop: 2 }}>
@@ -260,7 +260,7 @@ export default function Currency() {
 
             <div style={{ fontSize: 11, color: "var(--text-muted)", marginTop: 16, textAlign: "center", lineHeight: 1.5, display: "flex", alignItems: "center", justifyContent: "center", gap: 6 }}>
                 {isLive
-                    ? <><CheckCircle2 size={12} color="var(--green)" /> Live rates from European Central Bank via Frankfurter.app · Free & no API key required</>
+                    ? <><CheckCircle2 size={12} color="var(--green)" /> Live rates from European Central Bank via Frankfurter.dev · Free & no API key required</>
                     : <><AlertTriangle size={12} color="var(--amber)" /> Using approximate offline rates. Check your bank for exact amounts.</>}
             </div>
         </div>
