@@ -1,16 +1,48 @@
-# React + Vite
+# Travel Plan
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A mobile-first trip planner built with React and Vite. It keeps a multi-city itinerary, budget, places list and packing list in one app, and works without any API keys.
 
-Currently, two official plugins are available:
+The bundled trip data covers Bangkok, Chiang Mai, Phuket and Malaysia. Swap in your own trip by editing one file.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## Features
 
-## React Compiler
+- **Dashboard:** trip overview at a glance
+- **Itinerary:** day-by-day plan with time slots, must-visit notes and estimated versus actual cost
+- **Budget:** spending tracked against the plan
+- **Places:** places to visit by category, with visited status and notes
+- **Packing:** packing checklist
+- **Currency:** converter with live rates and offline fallback rates
+- **Notes:** free-form trip notes
+- **Photo tools:** golden-hour and sun times for each location, calculated with SunCalc
+- **Maps:** one-tap Google Maps directions or OpenStreetMap for any place
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+Your changes are saved in the browser's local storage, so there is no account and no backend.
 
-## Expanding the ESLint configuration
+## Tech stack
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+React 19, React Router 7, Vite, lucide-react, SunCalc
+
+## Getting started
+
+```bash
+git clone https://github.com/mkjan30/travelplan.git
+cd travelplan
+npm install
+npm run dev
+```
+
+Other scripts: `npm run build`, `npm run preview`, `npm run lint`.
+
+## Use your own trip
+
+Edit `src/data/tripData.js`. Each trip has a destination, dates, currency and a list of days; each day has time slots with a place, cost estimate and coordinates.
+
+## Project structure
+
+```
+src/
+  pages/        One file per screen (Dashboard, Itinerary, Budget, ...)
+  components/   Shared UI such as MapButton
+  data/         Trip data and photo spots
+  hooks/        useLocalStorage
+```
